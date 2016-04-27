@@ -53,7 +53,7 @@ public class QueueTest {
         mQueueArrayImplementation.printQueue();
 
         mQueueArrayImplementation.enqueue("seventh");
-
+        mQueueArrayImplementation.printQueue();
 
     }
 

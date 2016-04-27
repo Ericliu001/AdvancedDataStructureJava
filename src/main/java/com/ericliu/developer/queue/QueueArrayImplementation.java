@@ -12,38 +12,48 @@ public class QueueArrayImplementation implements Queue<String> {
 
     @Override
     public void dequeue() {
-        if (last == first) {
-            if (last == -1) {
+        if (isEmpty()) {
                 System.out.println("empty queue");
-                return;
-            }
+
+        } else if (last == first) {
 
             last = first = -1;
-            return;
+        } else {
+            first++;
         }
 
-        first++;
 
+    }
 
+    private boolean isFull() {
+        if (last + 1 - first == size) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isEmpty() {
+        if (last == -1 || first == -1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void enqueue(String s) {
 
-        if (last + 1 - first == size) {
+        if (isFull()) {
             System.out.println("full queue");
-            return;
-        }
-
-        if (first == last && first == -1) {
+        } else if (isEmpty()) {
             first = last = 0;
-            array[0] = s;
-            return;
+            array[last] = s;
+        } else {
+            last++;
+            int realLast = last % size;
+            array[realLast] = s;
         }
-
-        last++;
-        int realLast = last % size;
-        array[realLast] = s;
     }
 
     @Override
