@@ -9,51 +9,51 @@ import org.junit.Test;
  */
 public class QueueTest {
 
-    private QueueArrayImplementation mQueueArrayImplementation;
+    private Queue mQueue;
 
     @Before
     public void setUp() throws Exception {
-        mQueueArrayImplementation = new QueueArrayImplementation();
+        mQueue = new QueueLinkedListImpl();
     }
 
     @After
     public void tearDown() throws Exception {
 
-        mQueueArrayImplementation = null;
+        mQueue = null;
     }
 
     @Test
     public void testDequeue() throws Exception {
 
-        mQueueArrayImplementation.dequeue();
+        mQueue.dequeue();
 
-        mQueueArrayImplementation.enqueue("hello");
-        mQueueArrayImplementation.printQueue();
+        mQueue.enqueue("hello");
+        mQueue.printQueue();
 
-        mQueueArrayImplementation.dequeue();
-        mQueueArrayImplementation.printQueue();
+        mQueue.dequeue();
+        mQueue.printQueue();
 
-        mQueueArrayImplementation.dequeue();
+        mQueue.dequeue();
 
 
     }
 
     @Test
     public void testEnqueue() throws Exception {
-        mQueueArrayImplementation.enqueue("first");
-        mQueueArrayImplementation.enqueue("second");
-        mQueueArrayImplementation.enqueue("third");
-        mQueueArrayImplementation.enqueue("fourth");
-        mQueueArrayImplementation.enqueue("fifth");
-        mQueueArrayImplementation.printQueue();
+        mQueue.enqueue("first");
+        mQueue.enqueue("second");
+        mQueue.enqueue("third");
+        mQueue.enqueue("fourth");
+        mQueue.enqueue("fifth");
+        mQueue.printQueue();
 
-        mQueueArrayImplementation.dequeue();
+        mQueue.dequeue();
 
-        mQueueArrayImplementation.enqueue("sixth");
-        mQueueArrayImplementation.printQueue();
+        mQueue.enqueue("sixth");
+        mQueue.printQueue();
 
-        mQueueArrayImplementation.enqueue("seventh");
-        mQueueArrayImplementation.printQueue();
+        mQueue.enqueue("seventh");
+        mQueue.printQueue();
 
     }
 

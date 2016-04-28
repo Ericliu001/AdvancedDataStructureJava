@@ -3,30 +3,30 @@ package com.ericliu.developer.queue;
 /**
  * Created by ericliu on 27/04/2016.
  */
-public class QueueArrayImplementation implements Queue<String> {
+public class QueueArrayImpl implements Queue<String> {
 
 
     private static final int size = 5;
     private String[] array = new String[size];
-    private int first = -1, last = -1;
+    private int front = -1, rear = -1;
 
     @Override
     public void dequeue() {
         if (isEmpty()) {
                 System.out.println("empty queue");
 
-        } else if (last == first) {
+        } else if (rear == front) {
 
-            last = first = -1;
+            rear = front = -1;
         } else {
-            first++;
+            front++;
         }
 
 
     }
 
     private boolean isFull() {
-        if (last + 1 - first == size) {
+        if (rear + 1 - front == size) {
             return true;
         } else {
             return false;
@@ -34,7 +34,7 @@ public class QueueArrayImplementation implements Queue<String> {
     }
 
     private boolean isEmpty() {
-        if (last == -1 || first == -1) {
+        if (rear == -1 || front == -1) {
             return true;
         } else {
             return false;
@@ -47,33 +47,33 @@ public class QueueArrayImplementation implements Queue<String> {
         if (isFull()) {
             System.out.println("full queue");
         } else if (isEmpty()) {
-            first = last = 0;
-            array[last] = s;
+            front = rear = 0;
+            array[rear] = s;
         } else {
-            last++;
-            int realLast = last % size;
+            rear++;
+            int realLast = rear % size;
             array[realLast] = s;
         }
     }
 
     @Override
     public String front() {
-        if (first == -1) {
+        if (front == -1) {
             System.out.println("empty queue");
             return null;
         }
 
-        return array[first % size];
+        return array[front % size];
     }
 
     @Override
     public void printQueue() {
-        if (first == last && first == -1) {
+        if (front == rear && front == -1) {
             return;
         }
 
-        for (int i = 0; i < last + 1 - first; i++) {
-            System.out.print(array[(first + i) % size] + ", ");
+        for (int i = 0; i < rear + 1 - front; i++) {
+            System.out.print(array[(front + i) % size] + ", ");
         }
         System.out.print("\n");
     }
