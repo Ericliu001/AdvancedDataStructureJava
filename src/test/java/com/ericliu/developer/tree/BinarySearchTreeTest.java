@@ -35,6 +35,7 @@ public class BinarySearchTreeTest {
         mTree.insert(4);
 
 
-        mTree.traverseAndPrintBFS();
+        mTree.traverseBFS();
+        mTree.traverseDFS();
     }
 }

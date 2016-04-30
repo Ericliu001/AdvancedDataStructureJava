@@ -2,6 +2,7 @@ package com.ericliu.developer.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Created by ericliu on 30/04/2016.
@@ -39,7 +40,7 @@ public class BinarySearchTree {
     }
 
 
-    public void traverseAndPrintBFS() {
+    public void traverseBFS() {
         System.out.print("\n");
         Queue<BstNode> queue = new LinkedList<>();
         if (root != null) {
@@ -60,6 +61,49 @@ public class BinarySearchTree {
 
 
         }
+        System.out.print("\n");
+    }
+
+    public void traverseDFS() {
+        if (root == null) {
+            return;
+        }
+        System.out.print("\n");
+
+        Stack<BstNode> stack = new Stack<>();
+        BstNode current = root;
+        stack.push(current);
+        System.out.print(current.data + ", ");
+
+        while (!stack.isEmpty()) {
+            while (current.left != null) {
+                current = current.left;
+                stack.push(current);
+                System.out.print(current.data + ", ");
+            }
+
+            while (current.right == null) {
+                if (!stack.isEmpty()) {
+
+                    stack.pop();
+
+                    if (!stack.isEmpty()) {
+                        current = stack.peek();
+                    }
+                } else {
+                    break;
+                }
+            }
+
+            if (current.right != null) {
+                current = current.right;
+                stack.pop();
+                stack.push(current);
+                System.out.print(current.data + ", ");
+            }
+
+        }
+
         System.out.print("\n");
     }
 
