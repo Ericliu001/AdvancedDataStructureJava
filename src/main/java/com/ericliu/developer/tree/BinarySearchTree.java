@@ -72,34 +72,17 @@ public class BinarySearchTree {
 
         Stack<BstNode> stack = new Stack<>();
         BstNode current = root;
-        stack.push(current);
-        System.out.print(current.data + ", ");
+        stack.push(root);
 
         while (!stack.isEmpty()) {
-            while (current.left != null) {
-                current = current.left;
-                stack.push(current);
-                System.out.print(current.data + ", ");
-            }
-
-            while (current.right == null) {
-                if (!stack.isEmpty()) {
-
-                    stack.pop();
-
-                    if (!stack.isEmpty()) {
-                        current = stack.peek();
-                    }
-                } else {
-                    break;
-                }
-            }
-
+           current = stack.pop();
+            System.out.print(current.data + ", ");
             if (current.right != null) {
-                current = current.right;
-                stack.pop();
-                stack.push(current);
-                System.out.print(current.data + ", ");
+                stack.push(current.right);
+            }
+
+            if (current.left != null) {
+                stack.push(current.left);
             }
 
         }
