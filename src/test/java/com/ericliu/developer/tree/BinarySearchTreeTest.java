@@ -36,6 +36,7 @@ public class BinarySearchTreeTest {
 
 
         mTree.traverseBFS();
-        mTree.traverseDFS();
+        mTree.preorder();
+        mTree.inorder();
     }
 }

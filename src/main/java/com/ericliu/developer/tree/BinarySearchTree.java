@@ -64,7 +64,7 @@ public class BinarySearchTree {
         System.out.print("\n");
     }
 
-    public void traverseDFS() {
+    public void preorder() {
         if (root == null) {
             return;
         }
@@ -75,19 +75,48 @@ public class BinarySearchTree {
         stack.push(root);
 
         while (!stack.isEmpty()) {
-           current = stack.pop();
+            current = stack.pop();
             System.out.print(current.data + ", ");
-            if (current.right != null) {
-                stack.push(current.right);
-            }
 
             if (current.left != null) {
                 stack.push(current.left);
             }
 
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+
+
         }
 
         System.out.print("\n");
+    }
+
+    public void inorder() {
+        if (root == null) {
+            return;
+        }
+        System.out.print("\n");
+
+        Stack<BstNode> stack = new Stack<>();
+        BstNode current = root;
+
+        while (!stack.empty() || current != null) {
+
+            if (current != null) {
+                stack.push(current);
+                current = current.left;
+
+            } else {
+                current = stack.pop();
+                System.out.print(current.data + ", ");
+                current = current.right;
+            }
+
+        }
+
+        System.out.print("\n");
+
     }
 
 }
