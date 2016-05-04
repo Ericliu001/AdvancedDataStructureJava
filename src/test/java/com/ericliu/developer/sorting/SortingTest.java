@@ -12,7 +12,7 @@ public class SortingTest {
 
     @Before
     public void setUp() throws Exception {
-        mArray = new int[]{4, 2,6,56,57,34,2,4, 0, 8,2,5};
+        mArray = new int[]{4, 2, 6, 56, 57, 34, 2, 4, 0, 8, 2, 5};
     }
 
     @After
@@ -33,4 +33,13 @@ public class SortingTest {
         bubbleSort.sort(mArray);
         bubbleSort.print(mArray);
     }
+
+    @Test
+    public void testInsertionSort() {
+        InsertionSort insertionSort = new InsertionSort();
+        insertionSort.sort(mArray);
+        insertionSort.print(mArray);
+    }
+
+
 }
