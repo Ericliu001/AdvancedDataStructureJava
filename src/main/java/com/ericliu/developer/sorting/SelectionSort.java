@@ -3,12 +3,12 @@ package com.ericliu.developer.sorting;
 /**
  * Created by ericliu on 4/05/2016.
  */
-public class SelectionSort implements Sort {
+public class SelectionSort extends Sort {
 
 
     @Override
     public int[] sort(int[] array) {
-        int minIndex = 0;
+        int minIndex, temp = 0;
         for (int i = 0; i < array.length -1 ; i++) {
             minIndex = i;
             for (int j = i; j < array.length; j++) {
@@ -17,7 +17,7 @@ public class SelectionSort implements Sort {
                 }
             }
             if (minIndex != i) {
-                int temp = array[i];
+                temp = array[i];
                 array[i] = array[minIndex];
                 array[minIndex] = temp;
             }
@@ -30,12 +30,5 @@ public class SelectionSort implements Sort {
         return array;
     }
 
-    @Override
-    public void print(int[] array) {
-        System.out.print("\n");
-        for (int i : array) {
-            System.out.print(i + ", ");
-        }
-        System.out.print("\n");
-    }
+
 }

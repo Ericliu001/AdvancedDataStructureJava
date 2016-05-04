@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by ericliu on 4/05/2016.
  */
-public class SelectionSortTest {
+public class SortingTest {
     int[] mArray;
 
     @Before
@@ -21,9 +21,16 @@ public class SelectionSortTest {
     }
 
     @Test
-    public void testSort() throws Exception {
+    public void testSelectionSort() throws Exception {
         SelectionSort selectionSort = new SelectionSort();
         selectionSort.sort(mArray);
         selectionSort.print(mArray);
+    }
+
+    @Test
+    public void testBubbleSort() {
+        BubbleSort bubbleSort = new BubbleSort();
+        bubbleSort.sort(mArray);
+        bubbleSort.print(mArray);
     }
 }
