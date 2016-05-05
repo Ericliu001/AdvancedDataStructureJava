@@ -78,4 +78,15 @@ public class SortingTest {
     }
 
 
+    @Test
+    public void testQuickSort(){
+        System.out.println("Quick sort: ");
+
+        QuickSort quickSort = new QuickSort();
+        quickSort.sort(mArray);
+        quickSort.print(mArray);
+
+    }
+
+
 }
