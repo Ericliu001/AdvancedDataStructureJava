@@ -27,17 +27,12 @@ public class ArrayList<E> {
         return size == 0;
     }
 
-    public boolean add(E e) {
-        if (size < capacity) {
-            data[size] = e;
-            size ++ ;
-            return true;
-        }
-        return false;
+    public void add(E e) {
+       add(size, e);
     }
 
     public void remove(int index) {
-        checkIndex(index);
+        checkIndex(index, size);
         for (int i = index; i < size - 1 ; i++) { // notice it is size -1 here, NOT size
             data[i] = data[i + 1];
         }
@@ -46,15 +41,15 @@ public class ArrayList<E> {
     }
 
     public E get(int index) {
-        checkIndex(index);
+        checkIndex(index, size);
         return data[index];
     }
 
 
     public void add(int index, E element) {
-        checkIndex(index);
+        checkIndex(index, size + 1); // notice here is size + 1
         if (size == capacity) {
-            throw new IllegalStateException("Array is full!");
+            resize(capacity*2);
         }
         for (int i = size; i > index; i--) { // notice it starts from size, NOT size - 1
             data[i] = data[i - 1];
@@ -63,8 +58,8 @@ public class ArrayList<E> {
         size++;
     }
 
-    private void checkIndex(int index) {
-        if (index >= size || index < 0) {
+    private void checkIndex(int index, int n) {
+        if (index >= n || index < 0) {
             throw new IndexOutOfBoundsException("Illegal index: " + index);
         }
     }
@@ -78,5 +73,14 @@ public class ArrayList<E> {
         }
 
         return str;
+    }
+
+    private void resize(int capacity){
+        this.capacity = capacity;
+        E[] temp = (E[]) new Object[capacity];
+        for (int i = 0; i < data.length; i++) {
+            temp[i] = data[i];
+        }
+        data = temp;
     }
 }

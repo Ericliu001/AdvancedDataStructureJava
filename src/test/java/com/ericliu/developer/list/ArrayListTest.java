@@ -24,7 +24,7 @@ public class ArrayListTest {
     @Test
     public void testOperations(){
 
-        ArrayList<String> arrayList = new ArrayList<>();
+        ArrayList<String> arrayList = new ArrayList<>(2);
 
         arrayList.add("one");
         arrayList.add("four");
@@ -35,6 +35,9 @@ public class ArrayListTest {
 
 
         assertEquals("one", arrayList.get(0));
+        System.out.println(arrayList);
+
+        arrayList.remove(2);
         System.out.println(arrayList);
     }
 }
