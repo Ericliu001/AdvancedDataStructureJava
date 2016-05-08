@@ -88,6 +88,37 @@ public class LinkedList<E> {
     }
 
 
+    public void reverse(){
+        Node<E> prev = null, current = head, next = head;
+
+        while (next != null) {
+            current = next;
+            next = next.next;
+
+            current.next = prev;
+            prev = current;
+        }
+
+        head = current; // dont forget this step
+    }
+
+    public void reverseRecursive(){
+
+        reverseRecursive(head);
+    }
+
+    private void reverseRecursive(Node<E> pointer){
+        if (pointer.next == null) {
+            head = pointer;
+            return;
+        } else {
+
+            reverseRecursive(pointer.next);
+            pointer.next.next = pointer;
+            pointer.next = null;
+        }
+
+    }
 
 
     public void print(){

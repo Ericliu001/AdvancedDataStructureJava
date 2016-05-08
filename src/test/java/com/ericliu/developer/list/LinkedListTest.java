@@ -34,5 +34,15 @@ public class LinkedListTest {
         mLinkedList.delete(0);
         mLinkedList.delete(2);
         mLinkedList.print();
+
+        mLinkedList.insert(0, "First");
+        mLinkedList.insert(3, "Fourth");
+
+        mLinkedList.reverse();
+        mLinkedList.print();
+
+        mLinkedList.reverseRecursive();
+        mLinkedList.print();
+
     }
 }
