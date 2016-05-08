@@ -45,4 +45,19 @@ public class LinkedListTest {
         mLinkedList.print();
 
     }
+
+    @Test
+    public void testReverse(){
+        mLinkedList.insert(0, "First");
+        mLinkedList.insert(1, "Second");
+        mLinkedList.insert(2, "Fourth");
+        mLinkedList.insert(2, "Third");
+        mLinkedList.insert(4, "Fifth");
+
+        mLinkedList.print();
+
+        mLinkedList.reverse(1,3);
+
+        mLinkedList.print();
+    }
 }

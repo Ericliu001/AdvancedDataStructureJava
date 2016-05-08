@@ -1,5 +1,7 @@
 package com.ericliu.developer.list;
 
+import java.util.Stack;
+
 /**
  * Created by ericliu on 8/05/2016.
  */
@@ -8,13 +10,13 @@ public class LinkedList<E> {
     private Node<E> head;
     private int size;
 
-    public static class Node<E>{
+    public static class Node<E> {
         public E data;
         public Node<E> next;
     }
 
 
-    public void insertAtHead(E element){
+    public void insertAtHead(E element) {
         Node<E> node = new Node<>();
         node.data = element;
         if (head == null) {
@@ -27,12 +29,12 @@ public class LinkedList<E> {
     }
 
 
-    public void deleteAtHead(){
+    public void deleteAtHead() {
         if (head == null) {
             return;
         }
         head = head.next;
-        size --;
+        size--;
     }
 
 
@@ -59,7 +61,7 @@ public class LinkedList<E> {
         while (i < index) {
             current = next;
             next = next.next;
-            i ++;
+            i++;
         }
 
         Node<E> temp = new Node<>();
@@ -84,11 +86,11 @@ public class LinkedList<E> {
             i++;
         }
         current.next = current.next.next;
-        size --;
+        size--;
     }
 
 
-    public void reverse(){
+    public void reverse() {
         Node<E> prev = null, current = head, next = head;
 
         while (next != null) {
@@ -102,12 +104,12 @@ public class LinkedList<E> {
         head = current; // dont forget this step
     }
 
-    public void reverseRecursive(){
+    public void reverseRecursive() {
 
         reverseRecursive(head);
     }
 
-    private void reverseRecursive(Node<E> pointer){
+    private void reverseRecursive(Node<E> pointer) {
         if (pointer.next == null) {
             head = pointer;
             return;
@@ -121,11 +123,46 @@ public class LinkedList<E> {
     }
 
 
-    public void print(){
+    public void reverse(int startIndex, int number) {
+        checkIndex(startIndex, size);
+        checkIndex(startIndex + number, size);
+
+        Stack<Node<E>> stack = new Stack<>();
+
+        Node<E> start = head, current = head, end = head, temp = null;
+        int i = 0;
+        while (i < startIndex) {
+            start = current;
+            current = current.next;
+            i++;
+        }
+
+        for (int j = 0; j < number; j++) {
+            stack.push(current);
+            current = current.next;
+        }
+
+        end = current;
+
+        start.next = stack.peek();
+        while (stack.size() > 0) {
+            temp = stack.pop();
+            if (!stack.isEmpty()) {
+                temp.next = stack.peek();
+            }
+        }
+        if (temp != null) {
+            temp.next = end;
+        }
+
+    }
+
+
+    public void print() {
         System.out.print("\n LinkedList: ");
         Node<E> current = head;
         while (current != null) {
-            System.out.print(current.data +  ", ");
+            System.out.print(current.data + ", ");
             current = current.next;
         }
         System.out.print("\n");
