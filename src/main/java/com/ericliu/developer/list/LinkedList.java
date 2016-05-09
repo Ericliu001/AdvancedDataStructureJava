@@ -7,7 +7,7 @@ import java.util.Stack;
  */
 public class LinkedList<E> {
 
-    private Node<E> head;
+    public Node<E> head;
     private int size;
 
     public static class Node<E> {

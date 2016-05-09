@@ -9,39 +9,14 @@ import java.util.Stack;
 
 /**
  * Created by ericliu on 2/05/2016.
- * <p/>
- * <p/>
+ * Interview Question:
+ *
  * Given the root of a binary tree containing integers, print the columns of the tree in order with the nodes in each column printed top-to-bottom.
- * Given the root of a binary tree containing integers, print the columns of the tree in order with the nodes in each column printed top-to-bottom.
- * <p/>
- * <p/>
- * Input:
- * 6
- * / \
- * 3   4
- * / \   \
- * 5   1   0
- * / \     /
- * 9   2   8
- * \
- * 7
- * <p/>
- * Output:
- * 9 5 3 2 6 1 7 4 8 0
- * <p/>
- * Input:
- * 1
- * /   \
- * 2     3
- * / \   / \
- * 4   5 6   7
- * <p/>
+ *
  * When two nodes share the same position (e.g. 5 and 6), they may be printed in either order:
- * <p/>
- * Output:
- * 4 2 1 5 6 3 7
- * or:
- * 4 2 1 6 5 3 7
+ *
+ *
+ * @see  <a href="careercup">https://www.careercup.com/question?id=5749533368647680</a>
  */
 public class Tree1 {
     private Node root;
