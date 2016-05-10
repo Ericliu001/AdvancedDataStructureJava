@@ -168,4 +168,15 @@ public class LinkedList<E> {
         System.out.print("\n");
     }
 
+
+    public static <E> void print(Node<E> head){
+        System.out.print("\n LinkedList: ");
+        Node<E> current = head;
+        while (current != null) {
+            System.out.print(current.data + ", ");
+            current = current.next;
+        }
+        System.out.print("\n");
+    }
+
 }
