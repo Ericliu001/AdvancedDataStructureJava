@@ -40,7 +40,14 @@ public class LinkedList<E> {
 
     public E get(int index) {
         checkIndex(index, size);
-        return null;
+
+        Node<E> pointer = head;
+
+        for (int i = 0; i < index; i++) {
+            pointer = pointer.next;
+        }
+
+        return pointer.data;
     }
 
     private void checkIndex(int index, int n) {
