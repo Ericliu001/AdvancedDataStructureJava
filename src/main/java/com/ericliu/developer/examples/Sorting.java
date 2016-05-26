@@ -6,7 +6,7 @@ package com.ericliu.developer.examples;
 public class Sorting {
 
 
-    private static void legacyMergeSort(Object[] a) {
+    public static void legacyMergeSort(Object[] a) {
         Object[] aux = a.clone();
         mergeSort(aux, a, 0, a.length, 0);
     }
@@ -16,7 +16,7 @@ public class Sorting {
      * used in preference to mergesort.
      * To be removed in a future release.
      */
-    private static final int INSERTIONSORT_THRESHOLD = 7;
+    private static final int INSERTIONSORT_THRESHOLD = 3;
 
     /**
      * Src is the source array that starts at index 0
