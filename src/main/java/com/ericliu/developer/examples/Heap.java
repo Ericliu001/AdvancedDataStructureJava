@@ -1,12 +1,19 @@
-package com.ericliu.developer.heap;
+package com.ericliu.developer.examples;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Queue;
 
 /**
  * Created by ericliu on 5/06/2016.
  */
 public class Heap<E> {
+
+    /**
+     * The number of times this priority queue has been
+     * <i>structurally modified</i>.  See AbstractList for gory details.
+     */
+    private transient int modCount = 0;
 
     /**
      * The comparator, or null if priority queue uses elements'
@@ -110,4 +117,100 @@ public class Heap<E> {
     public Comparator<? super E> comparator() {
         return comparator;
     }
+
+
+
+    /**
+     * Inserts the specified element into this priority queue.
+     *
+     * @return {@code true} (as specified by {@link Queue#offer})
+     * @throws ClassCastException if the specified element cannot be
+     *         compared with elements currently in this priority queue
+     *         according to the priority queue's ordering
+     * @throws NullPointerException if the specified element is null
+     */
+    public boolean offer(E e) {
+        if (e == null)
+            throw new NullPointerException();
+        modCount++;
+        int i = size;
+        if (i >= queue.length)
+            grow(i + 1);
+        size = i + 1;
+        if (i == 0)
+            queue[0] = e;
+        else
+            siftUp(i, e);
+        return true;
+    }
+
+
+    public E poll() {
+        if (size == 0)
+            return null;
+        int s = --size;
+        modCount++;
+        E result = (E) queue[0];
+        E x = (E) queue[s];
+        queue[s] = null;
+        if (s != 0)
+            siftDown(0, x);
+        return result;
+    }
+
+
+    /**
+     * Inserts item x at position k, maintaining heap invariant by
+     * promoting x up the tree until it is greater than or equal to
+     * its parent, or is the root.
+     *
+     * To simplify and speed up coercions and comparisons. the
+     * Comparable and Comparator versions are separated into different
+     * methods that are otherwise identical. (Similarly for siftDown.)
+     *
+     * @param k the position to fill
+     * @param x the item to insert
+     */
+    private void siftUp(int k, E x) {
+        if (comparator != null)
+            siftUpUsingComparator(k, x);
+        else
+            siftUpComparable(k, x);
+    }
+
+    private void siftUpComparable(int k, E x) {
+        Comparable<? super E> key = (Comparable<? super E>) x;
+        while (k > 0) {
+            int parent = (k - 1) >>> 1;
+            Object e = queue[parent];
+            if (key.compareTo((E) e) >= 0)
+                break;
+            queue[k] = e;
+            k = parent;
+        }
+        queue[k] = key;
+    }
+
+    private void siftUpUsingComparator(int k, E x) {
+        while (k > 0) {
+            int parent = (k - 1) >>> 1;
+            Object e = queue[parent];
+            if (comparator.compare(x, (E) e) >= 0)
+                break;
+            queue[k] = e;
+            k = parent;
+        }
+        queue[k] = x;
+    }
+
+
+    /**
+     * Increases the capacity of the array.
+     *
+     * @param minCapacity the desired minimum capacity
+     */
+    private void grow(int minCapacity) {
+        // TODO: 6/06/2016 implementation omitted
+    }
+
 }
