@@ -169,19 +169,19 @@ public class AVLTree<K, V> {
      */
     private void rebalance(Node<K, V> unbalanced, boolean insert) {
         for (Node<K, V> node = unbalanced; node != null; node = node.parent) {
-            Node<K, V> left = node.left;
-            Node<K, V> right = node.right;
-            int leftHeight = left != null ? left.height : 0;
-            int rightHeight = right != null ? right.height : 0;
+            final Node<K, V> left = node.left;
+            final Node<K, V> right = node.right;
+            final int leftHeight = left != null ? left.height : 0;
+            final int rightHeight = right != null ? right.height : 0;
 
             int delta = leftHeight - rightHeight;
             if (delta == -2) {
-                Node<K, V> rightLeft = right.left;
-                Node<K, V> rightRight = right.right;
-                int rightRightHeight = rightRight != null ? rightRight.height : 0;
-                int rightLeftHeight = rightLeft != null ? rightLeft.height : 0;
+                final Node<K, V> rightLeft = right.left;
+                final Node<K, V> rightRight = right.right;
+                final int rightRightHeight = rightRight != null ? rightRight.height : 0;
+                final int rightLeftHeight = rightLeft != null ? rightLeft.height : 0;
 
-                int rightDelta = rightLeftHeight - rightRightHeight;
+                final int rightDelta = rightLeftHeight - rightRightHeight;
                 if (rightDelta == -1 || (rightDelta == 0 && !insert)) {
                     rotateLeft(node); // AVL right right
                 } else {
@@ -194,12 +194,12 @@ public class AVLTree<K, V> {
                 }
 
             } else if (delta == 2) {
-                Node<K, V> leftLeft = left.left;
-                Node<K, V> leftRight = left.right;
-                int leftRightHeight = leftRight != null ? leftRight.height : 0;
-                int leftLeftHeight = leftLeft != null ? leftLeft.height : 0;
+                final Node<K, V> leftLeft = left.left;
+                final Node<K, V> leftRight = left.right;
+                final int leftRightHeight = leftRight != null ? leftRight.height : 0;
+                final int leftLeftHeight = leftLeft != null ? leftLeft.height : 0;
 
-                int leftDelta = leftLeftHeight - leftRightHeight;
+                final int leftDelta = leftLeftHeight - leftRightHeight;
                 if (leftDelta == 1 || (leftDelta == 0 && !insert)) {
                     rotateRight(node); // AVL left left
                 } else {
