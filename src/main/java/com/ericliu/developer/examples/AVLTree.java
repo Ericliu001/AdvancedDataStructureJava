@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Created by ericliu on 6/06/2016.
  */
-public class AVL<K, V> {
+public class AVLTree<K, V> {
 
     Node<K, V> root;
 
@@ -161,6 +161,9 @@ public class AVL<K, V> {
      * Rebalances the tree by making any AVL rotations necessary between the
      * newly-unbalanced node and the tree's root.
      *
+     *
+     * @param unbalanced the parent of the newly-inserted Node.
+     *
      * @param insert true if the node was unbalanced by an insert; false if it
      *     was by a removal.
      */
@@ -216,7 +219,7 @@ public class AVL<K, V> {
 
             } else {
                 // assert (delta == -1 || delta == 1);
-                node.height = Math.max(leftHeight, rightHeight) + 1;
+                node.height = Math.max(leftHeight, rightHeight) + 1; // update the height
                 if (!insert) {
                     break; // the height hasn't changed, so rebalancing is done!
                 }
