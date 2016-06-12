@@ -139,7 +139,7 @@ public class AVLTree<K, V> {
 
 
     private void replaceInParent(Node<K, V> node, Node<K, V> replacement) {
-        Node<K, V> parent = node.parent;
+        final Node<K, V> parent = node.parent;
         node.parent = null;
         if (replacement != null) {
             replacement.parent = parent;
@@ -167,15 +167,16 @@ public class AVLTree<K, V> {
      * @param insert true if the node was unbalanced by an insert; false if it
      *     was by a removal.
      */
-    private void rebalance(Node<K, V> unbalanced, boolean insert) {
-        for (Node<K, V> node = unbalanced; node != null; node = node.parent) {
+    public void rebalance(Node<K, V> unbalanced, boolean insert) {
+        for (Node<K, V> node = unbalanced; node != null; node = node.parent) { // moving up the path
             final Node<K, V> left = node.left;
             final Node<K, V> right = node.right;
             final int leftHeight = left != null ? left.height : 0;
             final int rightHeight = right != null ? right.height : 0;
 
-            int delta = leftHeight - rightHeight;
-            if (delta == -2) {
+            final int delta = leftHeight - rightHeight;
+            if (delta == -2) { // right heavy
+
                 final Node<K, V> rightLeft = right.left;
                 final Node<K, V> rightRight = right.right;
                 final int rightRightHeight = rightRight != null ? rightRight.height : 0;
@@ -193,7 +194,8 @@ public class AVLTree<K, V> {
                     break; // no further rotations will be necessary
                 }
 
-            } else if (delta == 2) {
+            } else if (delta == 2) { // left heavy
+
                 final Node<K, V> leftLeft = left.left;
                 final Node<K, V> leftRight = left.right;
                 final int leftRightHeight = leftRight != null ? leftRight.height : 0;
@@ -231,10 +233,10 @@ public class AVLTree<K, V> {
      * Rotates the subtree so that its root's right child is the new root.
      */
     private void rotateLeft(Node<K, V> root) {
-        Node<K, V> left = root.left;
-        Node<K, V> pivot = root.right;
-        Node<K, V> pivotLeft = pivot.left;
-        Node<K, V> pivotRight = pivot.right;
+        final Node<K, V> left = root.left;
+        final Node<K, V> pivot = root.right;
+        final Node<K, V> pivotLeft = pivot.left;
+        final Node<K, V> pivotRight = pivot.right;
 
         // move the pivot's left child to the root's right
         root.right = pivotLeft;
