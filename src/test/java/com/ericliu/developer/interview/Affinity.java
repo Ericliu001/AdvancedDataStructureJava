@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by ericliu on 25/06/2016.
  */
-public class Amazon {
+public class Affinity {
     double threshold = 0.15;
     int numAffinity = 4;
 
