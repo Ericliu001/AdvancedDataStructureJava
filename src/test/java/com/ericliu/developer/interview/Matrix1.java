@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class Matrix1 {
 
 
-    private int findZeroCount(int[][] matrix) {
+    public int findZeroCount(int[][] matrix) {
         if (matrix == null || matrix.length < 1) {
             return 0;
         }
