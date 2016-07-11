@@ -22,7 +22,7 @@ public class GraphTest {
 
     @Test
     public void testAdjacencyMatrix() {
-        AdjacencyMatrixGraph matrixGraph = new AdjacencyMatrixGraph();
+        MatrixGraphImpl matrixGraph = new MatrixGraphImpl();
         for (String city : cities) {
             matrixGraph.addVertex(city);
         }
@@ -48,7 +48,7 @@ public class GraphTest {
         printMatrixGraph(matrixGraph);
     }
 
-    private void printMatrixGraph(AdjacencyMatrixGraph graph) {
+    private void printMatrixGraph(MatrixGraphImpl graph) {
         for (String vertex : graph.vertexs) {
             System.out.print("      " + vertex + ", ");
         }
