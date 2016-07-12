@@ -35,6 +35,7 @@ public class IntegerMaxHeap {
         for (int i = 0; i < queue.length; i++) {
             newArray[i] = queue[i];
         }
+        queue = newArray;
     }
 
 
@@ -44,8 +45,8 @@ public class IntegerMaxHeap {
         }
 
         int max = queue[0];
+        swap(0, --size);
         siftDown(0);
-        size--;
         return max;
     }
 
@@ -64,9 +65,7 @@ public class IntegerMaxHeap {
             if (queue[parent] >= queue[index]) {
                 break;
             }
-            int temp = queue[index];
-            queue[index] = queue[parent];
-            queue[parent] = temp;
+            swap(index, parent);
             index = parent;
         }
 
@@ -79,16 +78,20 @@ public class IntegerMaxHeap {
                 child += 1; // right child
             }
             if (queue[index] >= queue[child]) {
-                break; // the the parent's data is better than the child's, stop sifting down.
+                break;
             }
-
-            // swap data between 2 nodes
-            int temp = queue[index];
-            queue[index] = queue[child];
-            queue[child] = temp;
+            swap(index, child);
             index = child;
         }
 
+
+    }
+
+    private void swap(int a, int b) {
+        // swap data between 2 nodes
+        int temp = queue[a];
+        queue[a] = queue[b];
+        queue[b] = temp;
     }
 
 }
