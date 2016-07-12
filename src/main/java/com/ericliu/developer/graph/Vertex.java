@@ -1,5 +1,7 @@
 package com.ericliu.developer.graph;
 
+import java.util.UUID;
+
 /**
  * Created by ericliu on 11/07/2016.
  */
@@ -7,6 +9,11 @@ public class Vertex {
     final private String id;
     final private String name;
 
+
+    public Vertex(String name){
+        this.id = UUID.fromString(name).toString();
+        this.name = name;
+    }
 
     public Vertex(String id, String name) {
         this.id = id;
