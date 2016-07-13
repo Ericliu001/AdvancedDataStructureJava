@@ -44,7 +44,16 @@ public class IntegerMaxHeapTest {
     }
 
     @Test
-    public void testPoll() throws Exception {
-
+    public void testHeapify() throws Exception {
+        int[] srcArray = {3, 5, 8, 2, 6, 7, 4};
+        mMaxHeap = new IntegerMaxHeap(srcArray);
+        assertTrue(mMaxHeap.poll() == 8);
+        assertTrue(mMaxHeap.poll() == 7);
+        assertTrue(mMaxHeap.poll() == 6);
+        assertTrue(mMaxHeap.poll() == 5);
+        assertTrue(mMaxHeap.poll() == 4);
+        assertTrue(mMaxHeap.poll() == 3);
+        assertTrue(mMaxHeap.poll() == 2);
+        assertTrue(mMaxHeap.poll() == -1);
     }
 }
