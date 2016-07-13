@@ -63,7 +63,7 @@ public class BinarySearch {
             }
 
         }
-        return result;  // key not found.
+        return result;
     }
 
 
@@ -96,7 +96,7 @@ public class BinarySearch {
             }
 
         }
-        return result;  // key not found.
+        return result;
     }
 
 
@@ -129,7 +129,7 @@ public class BinarySearch {
             }
 
         }
-        return low;  // key not found.
+        return low;  // return the lower bound.
     }
 
 
@@ -161,6 +161,6 @@ public class BinarySearch {
             }
 
         }
-        return high;  // key not found.
+        return high;  // return the upper bound
     }
 }
