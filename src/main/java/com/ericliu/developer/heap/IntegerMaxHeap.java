@@ -51,7 +51,7 @@ public class IntegerMaxHeap {
     }
 
     private void heapify() {
-        for (int i = (size/2) - 1; i >= 0 ; i--) {
+        for (int i = (size/2) - 1; i >= 0 ; i--) { // skip all the leaf nodes, k >= size/2
             siftDown(i);
         }
 
@@ -72,10 +72,10 @@ public class IntegerMaxHeap {
     }
 
     private void siftDown(int index) {
-        while (index < size / 2) {
+        while (index < size / 2) { // index is not a leaf node
             int child = index*2 + 1; // left Child
-            if (child + 1 < size && queue[child] < queue[child + 1]) { // it is important to check if (child + 1) is out of boundary or not
-                child += 1; // right child
+            if (child + 1 < size && queue[child] < queue[child + 1]) { //it is important to check if (child + 1) is out of boundary
+                child ++; // right child
             }
             if (queue[index] >= queue[child]) {
                 break;

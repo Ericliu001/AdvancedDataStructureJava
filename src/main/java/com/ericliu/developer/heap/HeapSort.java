@@ -5,8 +5,11 @@ package com.ericliu.developer.heap;
  */
 public class HeapSort {
 
-    public void heapSort(int[] src){
-
-
+    public static void heapSort(int[] src) {
+        IntegerMaxHeap heap = new IntegerMaxHeap(src);
+        for (int i = src.length - 1; i >= 0; i--) {
+            src[i] = heap.poll();
+        }
     }
+
 }
