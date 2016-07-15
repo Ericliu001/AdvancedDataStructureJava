@@ -116,7 +116,7 @@ public class BinarySearch {
         int low = fromIndex;
         int high = toIndex - 1;
 
-        while ( high - low > 1) {
+        while ( high - low > 1) { // because we are looking for a bracket, the loops stops when high - low <= 1
             int mid = (low + high) >>> 1;
             int midVal = a[mid];
 
