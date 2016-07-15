@@ -14,15 +14,14 @@ public class LeapSolution2 {
         for (int i = 0; i <= M; i++)
             count[i] = 0;
         int maxOccurence = 1;
-        int index = -1;
+        int index = 0;
         for (int i = 0; i < N; i++) {
             if (count[A[i]] > 0) {
-                int tmp = count[A[i]];
+                int tmp = ++count[A[i]];
                 if (tmp > maxOccurence) {
                     maxOccurence = tmp;
                     index = i;
                 }
-                count[A[i]] = tmp + 1;
             } else {
                 count[A[i]] = 1;
             }
@@ -31,13 +30,26 @@ public class LeapSolution2 {
     }
 
 
-
     @Test
-    public void testSolution(){
+    public void testSolution() {
 
-        int result = solution(3, new int[]{1, 2, 3, 3, 1, 3, 1});
+        int result0 = solution(3, new int[]{0, 1, 1, 3, 3, 3});
 
-        assertTrue(result == 1 || result == 3);
+        assertTrue(result0 == 3);
+
+        int result1 = solution(3, new int[]{0, 1, 1, 3});
+
+        assertTrue(result1 == 1);
+
+
+        int result2 = solution(3, new int[]{0});
+
+        assertTrue(result2 == 0);
+
+
+        int result3 = solution(3, new int[]{3});
+
+        assertTrue(result3 == 3);
 
     }
 }
