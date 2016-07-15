@@ -1,4 +1,4 @@
-package com.ericliu.developer.interview;
+package com.ericliu.developer.interview.leap;
 
 import org.junit.Test;
 
@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by ericliu on 15/07/2016.
  */
-public class LeapSolution2 {
+public class LeapTask2 {
     int solution(int M, int[] A) {
         int N = A.length;
         int[] count = new int[M + 1];
