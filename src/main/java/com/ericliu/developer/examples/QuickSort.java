@@ -17,55 +17,55 @@ public class QuickSort {
      * left and highest index or right.  The first time you call
      * this function it will be with the parameters 0, a.length - 1.
      *
-     * @param a An integer array.
-     * @param lo0 Left boundary of array partition.
-     * @param hi0 Right boundary of array partition.
+     * @param data An integer array.
+     * @param low Left boundary of array partition.
+     * @param high Right boundary of array partition.
      */
-    static void QuickSort(int a[], int lo0, int hi0) {
-        int lo = lo0;
-        int hi = hi0;
+    static void quickSort(int data[], int low, int high) {
+        int leftPointer = low;
+        int rightPointer = high;
         int mid;
 
-        if ( hi0 > lo0) {
+        if ( high > low) {
 
             /* Arbitrarily establishing partition element as the midpoint of
              * the array.
              */
-            mid = a[ ( lo0 + hi0 ) / 2 ];
+            mid = data[ ( low + high ) / 2 ];
 
             // loop through the array until indices cross
-            while( lo <= hi ) {
+            while( leftPointer <= rightPointer ) {
                 /* find the first element that is greater than or equal to
                  * the partition element starting from the left Index.
                  */
-                while( ( lo < hi0 )  && ( a[lo] < mid ))
-                    ++lo;
+                while( ( leftPointer < high )  && ( data[leftPointer] < mid ))
+                    ++leftPointer;
 
                 /* find an element that is smaller than or equal to
                  * the partition element starting from the right Index.
                  */
-                while( ( hi > lo0 ) && ( a[hi] > mid ))
-                    --hi;
+                while( ( rightPointer > low ) && ( data[rightPointer] > mid ))
+                    --rightPointer;
 
                 // if the indexes have not crossed, swap
-                if( lo <= hi ) {
-                    swap(a, lo, hi);
-                    ++lo;
-                    --hi;
+                if( leftPointer <= rightPointer ) {
+                    swap(data, leftPointer, rightPointer);
+                    ++leftPointer;
+                    --rightPointer;
                 }
             }
 
             /* If the right index has not reached the left side of array
              * must now sort the left partition.
              */
-            if( lo0 < hi )
-                QuickSort( a, lo0, hi );
+            if( low < rightPointer )
+                quickSort( data, low, rightPointer );
 
             /* If the left index has not reached the right side of array
              * must now sort the right partition.
              */
-            if( lo < hi0 )
-                QuickSort( a, lo, hi0 );
+            if( leftPointer < high )
+                quickSort( data, leftPointer, high );
 
         }
     }

@@ -1,34 +1,32 @@
-package com.ericliu.developer.heap;
+package com.ericliu.developer.examples;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by ericliu on 13/07/2016.
+ * Created by ericliu on 17/07/2016.
  */
-public class HeapSortTest {
+public class QuickSortTest {
 
-    private IntegerMaxHeap mMaxHeap;
-
+    private int[] mArray;
 
     @Before
     public void setUp() throws Exception {
-        mMaxHeap = new IntegerMaxHeap();
+        mArray = new int[]{6, 2, 1, 5, 6, 9, 3, 7, 4, 8};
     }
 
     @After
     public void tearDown() throws Exception {
-        mMaxHeap = null;
+        mArray = null;
     }
 
     @Test
-    public void testHeapSort() throws Exception {
-        int[] srcArray = {3, 5, 8, 2, 6, 7, 4};
-        HeapSort.heapSort(srcArray);
-        printArray(srcArray);
-
+    public void testQuickSort() throws Exception {
+        QuickSort.quickSort(mArray, 0, mArray.length - 1);
+        printArray(mArray);
     }
+
 
     private void printArray(int[] srcArray) {
         System.out.print("\n");

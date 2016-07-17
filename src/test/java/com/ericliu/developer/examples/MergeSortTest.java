@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by ericliu on 24/05/2016.
  */
-public class SortingTest {
+public class MergeSortTest {
 
     private Integer[] mArray;
 
