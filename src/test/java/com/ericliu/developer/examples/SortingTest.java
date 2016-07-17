@@ -23,7 +23,7 @@ public class SortingTest {
 
     @Test
     public void testMergeSort(){
-        Sorting.legacyMergeSort(mArray);
+        MergeSort.legacyMergeSort(mArray);
 
     }
 }

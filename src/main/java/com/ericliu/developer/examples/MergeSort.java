@@ -3,7 +3,7 @@ package com.ericliu.developer.examples;
 /**
  * Created by ericliu on 23/05/2016.
  */
-public class Sorting {
+public class MergeSort {
 
 
     public static void legacyMergeSort(Object[] a) {
