@@ -59,11 +59,11 @@ public class MergeSort {
         }
 
         // Merge sorted halves (now in src) into dest
-        for(int i = destLow, p = low, q = mid; i < destHigh; i++) {
-            if (q >= high || p < mid && ((Comparable)src[p]).compareTo(src[q])<=0)
-                dest[i] = src[p++];
+        for(int write = destLow, readLeft = low, readRight = mid; write < destHigh; write++) {
+            if (readRight >= high || readLeft < mid && ((Comparable)src[readLeft]).compareTo(src[readRight])<=0)
+                dest[write] = src[readLeft++];
             else
-                dest[i] = src[q++];
+                dest[write] = src[readRight++];
         }
     }
 
