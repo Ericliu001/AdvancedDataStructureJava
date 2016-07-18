@@ -1,6 +1,11 @@
 package com.ericliu.developer;
 
+import com.ericliu.developer.tree.BstNode;
+
 import org.junit.Test;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 /**
  * Created by ericliu on 18/07/2016.
@@ -115,5 +120,88 @@ public class Exercises {
         mergeSort(srcArray);
         printArray(srcArray);
     }
+
+
+    //=====================Binary Search Tree=================================
+    public BstNode insertBst(BstNode root, int data) {
+        BstNode node = new BstNode();
+        node.data = data;
+        node.left = null;
+        node.right = null;
+
+        if (root == null) {
+            return node;
+        }
+
+
+        BstNode current = root;
+        while (current != null) {
+            if (data <= current.data) {
+                if (current.left == null) {
+                    current.left = node;
+                    return root;
+                } else {
+                    current = current.left;
+                }
+
+
+            } else {
+
+                if (current.right == null) {
+                    current.right = node;
+                    return root;
+                } else {
+                    current = current.right;
+                }
+
+            }
+
+
+        }
+
+        return root;
+    }
+
+    public void preorderNonRecursive(BstNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Deque<BstNode> stack = new ArrayDeque<>();
+        stack.push(root);
+        BstNode current = null;
+
+        while (!stack.isEmpty()) {
+            current = stack.pop();
+            System.out.print(" " + current.data + " ");
+
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+
+        }
+    }
+
+    @Test
+    public void testBst(){
+        BstNode root = insertBst(null, 5);
+        insertBst(root, 3);
+        insertBst(root, 7);
+        insertBst(root, 2);
+        insertBst(root, 1);
+        insertBst(root, 6);
+        insertBst(root, 8);
+        insertBst(root, 9);
+        insertBst(root, 10);
+        insertBst(root, 4);
+
+        preorderNonRecursive(root);
+
+    }
+
 
 }
