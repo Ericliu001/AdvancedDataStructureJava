@@ -4,6 +4,12 @@ package com.ericliu.developer.sorting;
  * Created by ericliu on 4/05/2016.
  */
 public class MergeSort extends Sort {
+
+    /**
+     * Bad implementation, better implementation below
+     * @param array
+     * @return
+     */
     @Override
     public int[] sort(int[] array) {
         if (array.length < 2) { // notice it's the array's length, not sub array's length
@@ -69,6 +75,10 @@ public class MergeSort extends Sort {
     }
 
 
+    /**
+     * The production grade implementation
+     * @param array
+     */
     public void mergeSort(int[] array) {
         int[] src = array.clone();
         mergeSort(src, array, 0, array.length - 1);
