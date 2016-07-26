@@ -354,9 +354,9 @@ public class HashMap<K,V>
                 (capacity >= Holder.ALTERNATIVE_HASHING_THRESHOLD);
         boolean switching = currentAltHashing ^ useAltHashing;
         if (switching) {
-            hashSeed = useAltHashing
-                    ? sun.misc.Hashing.randomHashSeed(this)
-                    : 0;
+//            hashSeed = useAltHashing
+//                    ? sun.misc.Hashing.randomHashSeed(this)
+//                    : 0;
         }
         return switching;
     }
@@ -371,7 +371,7 @@ public class HashMap<K,V>
     final int hash(Object k) {
         int h = hashSeed;
         if (0 != h && k instanceof String) {
-            return sun.misc.Hashing.stringHash32((String) k);
+//            return sun.misc.Hashing.stringHash32((String) k);
         }
 
         h ^= k.hashCode();

@@ -21,11 +21,11 @@ public class BinarySearch {
 
         while (low <= high) {
             int mid = (low + high) >>> 1;
-            int midVal = a[mid];
+            int midValue = a[mid];
 
-            if (midVal < key)
+            if (midValue < key)
                 low = mid + 1;
-            else if (midVal > key)
+            else if (midValue > key)
                 high = mid - 1;
             else
                 return mid; // key found
@@ -112,7 +112,6 @@ public class BinarySearch {
      */
     public static int binarySearchLowerBound(int[] a, int fromIndex, int toIndex,
                                      int key) {
-        int result = -1;
         int low = fromIndex;
         int high = toIndex - 1;
 

@@ -45,10 +45,9 @@ public class SortingTest {
         System.out.println("Insertion sort: ");
 
         InsertionSort insertionSort = new InsertionSort();
-        insertionSort.sort(mArray);
+        insertionSort.insertionSort(mArray);
         insertionSort.print(mArray);
     }
-
 
 
     @Test
@@ -60,7 +59,7 @@ public class SortingTest {
         MergeSort mergeSort = new MergeSort();
         mergeSort.merge(left, right, merged);
 
-        int[] result = new int[]{1,2,3,4,5,5};
+        int[] result = new int[]{1, 2, 3, 4, 5, 5};
         for (int i = 0; i < merged.length; i++) {
             assertEquals("The merge result is wrong!", merged[i], result[i]);
         }
@@ -68,7 +67,7 @@ public class SortingTest {
 
 
     @Test
-    public void testMergeSort(){
+    public void testMergeSort() {
         System.out.println("Merge sort: ");
 
         MergeSort mergeSort = new MergeSort();
@@ -79,7 +78,7 @@ public class SortingTest {
 
 
     @Test
-    public void testQuickSort(){
+    public void testQuickSort() {
         System.out.println("Quick sort: ");
 
         QuickSort quickSort = new QuickSort();
