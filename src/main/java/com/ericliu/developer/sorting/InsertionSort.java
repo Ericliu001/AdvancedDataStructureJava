@@ -26,13 +26,13 @@ public class InsertionSort extends Sort {
     }
 
 
-    //
+    // production grade implementation
 
     public int[] insertionSort(int[] array) {
 
         for (int i = 0; i < array.length; i++)
             for (int j = i; j > 0 &&
-                    ((Comparable) array[j - 1]).compareTo(array[j]) > 0; j--)
+                    array[j-1] > array[j] ; j--)
                 swap(array, j, j - 1);
         return array;
     }
