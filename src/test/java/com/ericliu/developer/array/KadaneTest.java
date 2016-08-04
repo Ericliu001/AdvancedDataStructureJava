@@ -33,6 +33,21 @@ public class KadaneTest {
         Kadane.Result result1 = Kadane.findMaxSumSubArray(mArray);
 
         assertEquals(result1.maxSum, 3);
+
+        mArray = new int[]{-3};
+
+        Kadane.Result result2 = Kadane.findMaxSumSubArray(mArray);
+
+        assertEquals(-3, result2.maxSum);
+        assertEquals(result2.startIndex, 0);
+        assertEquals(result2.endIndex, 0);
+
+        mArray = new int[]{2, -3};
+        Kadane.Result result3 = Kadane.findMaxSumSubArray(mArray);
+
+        assertEquals(2, result3.maxSum);
+        assertEquals(0, result3.startIndex);
+        assertEquals(0, result3.endIndex);
     }
 
 }
