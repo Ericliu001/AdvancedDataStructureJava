@@ -6,7 +6,7 @@ import org.junit.Test;
  * Created by ericliu on 4/08/2016.
  */
 
-public class spiral2DArray {
+public class Spiral2DArray {
 
     public enum Direction implements Travel {
         RIGHT {
@@ -21,8 +21,8 @@ public class spiral2DArray {
                 }
 
                 point.columnIndex = rect.right;
-                context.setDirection(DOWN);
                 rect.top++;
+                context.setDirection(DOWN);
 
                 if (isLastElement(rect, matrix)) {
                     return false;
@@ -42,9 +42,9 @@ public class spiral2DArray {
                 }
 
                 point.rowIndex = rect.bottom;
-                context.setDirection(LEFT);
                 rect.right--;
-                context.setRect(rect);
+                context.setDirection(LEFT);
+
                 if (isLastElement(rect, matrix)) {
                     return false;
                 }
@@ -63,9 +63,9 @@ public class spiral2DArray {
                 }
 
                 point.columnIndex = rect.left;
-                context.setDirection(UP);
                 rect.bottom--;
-                context.setRect(rect);
+                context.setDirection(UP);
+
                 if (isLastElement(rect, matrix)) {
                     return false;
                 }
@@ -84,9 +84,9 @@ public class spiral2DArray {
                 }
 
                 point.rowIndex = rect.top;
-                context.setDirection(RIGHT);
                 rect.left++;
-                context.setRect(rect);
+                context.setDirection(RIGHT);
+
                 if (isLastElement(rect, matrix)) {
                     return false;
                 }
