@@ -108,7 +108,7 @@ public class LinkedList<E> {
             prev = current;
         }
 
-        head = current; // dont forget this step
+        head = prev; // dont forget this step
     }
 
     public void reverseRecursive() {
