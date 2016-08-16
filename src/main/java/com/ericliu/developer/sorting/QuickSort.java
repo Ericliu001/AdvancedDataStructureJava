@@ -33,17 +33,17 @@ public class QuickSort extends Sort {
         }
 
         int pivotValue = array[end]; // notice it is end here, NOT array.length
-        int pivotingIndex = start; // notice it IS NOT 0 here, but start
+        int pivotIndex = start; // notice it IS NOT 0 here, but start
         for (int i = start; i < end; i++) {
             if (array[i] < pivotValue) {
-                swap(array, i, pivotingIndex);
-                pivotingIndex++;
+                swap(array, i, pivotIndex);
+                pivotIndex++;
             }
         }
-        swap(array, end, pivotingIndex);
+        swap(array, end, pivotIndex);
 
 
-        return pivotingIndex;
+        return pivotIndex;
     }
 
     private void swap(int[] array, int x, int y) {
