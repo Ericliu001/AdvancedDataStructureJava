@@ -42,15 +42,31 @@ public class int2Hex {
         return hexStr;
     }
 
-    private char calculateClosest(String substring) {
-        int color = Integer.parseInt(substring, 16);
+    private char calculateClosest(String colorString) {
+        int color = Integer.parseInt(colorString, 16);
         int reminder = color % 17;
-
         int roundup = reminder > 8 ? 16 - reminder : 0;
-
         int index = (color + roundup) / 17;
-
         return digits[index];
+    }
+
+
+    private char calculateClosestBitwise(String colorStr) {
+        int color = Integer.parseInt(colorStr, 16);
+        if (color > Integer.parseInt("ff", 16) - 8) {
+            return 'f';
+        }
+
+        char[] results = new char[2];
+        int mask = 32 - 1;
+        int charPos = 2;
+
+        do {
+            results[--charPos] = (char)( color & mask);
+            color >>>= 4;
+        }while (charPos > 0);
+
+        return digits[results[0] < results[1] ? results[0] : results[1]];
     }
 
 
@@ -63,5 +79,18 @@ public class int2Hex {
         String result1 = shortenRGB(hex1);
         assertEquals("999", result1);
 
+    }
+
+
+    @Test
+    public void testCalculateBitwise(){
+        String hex1 = "fa";
+        char result1 = calculateClosestBitwise(hex1);
+        assertEquals('f', result1);
+
+
+        String hex2 = "9a";
+        char result2 = calculateClosestBitwise(hex2);
+        assertEquals('9', result2);
     }
 }
