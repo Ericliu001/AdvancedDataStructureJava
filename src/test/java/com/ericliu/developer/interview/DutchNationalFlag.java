@@ -1,18 +1,18 @@
 package com.ericliu.developer.interview;
 
+import java.util.Random;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Random;
 
 /**
  * Created by ericliu on 31/10/16.
  * <p>
  * Dutch national flag. Given an array of n buckets, each containing a red, white, or blue pebble, sort them by color. The allowed operations are:
  * <p>
- * swap(i,j): swap the pebble in bucket i with the pebble in bucket j.
- * color(i): color of pebble in bucket i.
+ * void swap(i,j): swap the pebble in bucket i with the pebble in bucket j.
+ * int color(i): color of pebble in bucket i.
  * The performance requirements are as follows:
  * <p>
  * At most n calls to color().
