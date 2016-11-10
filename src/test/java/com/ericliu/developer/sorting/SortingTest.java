@@ -1,5 +1,7 @@
 package com.ericliu.developer.sorting;
 
+import java.util.Random;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +16,12 @@ public class SortingTest {
 
     @Before
     public void setUp() throws Exception {
-        mArray = new int[]{1, 3, 10, 5, 6, 4, 8, 9, 2, 7};
+        mArray = new int[30];
+        Random random = new Random();
+        for (int i = 0; i < mArray.length; i++) {
+            mArray[i] = random.nextInt(30 + 1);
+        }
+
     }
 
     @After

@@ -1,4 +1,4 @@
-package com.ericliu.developer.integer;
+package com.ericliu.developer.primitive;
 
 import org.junit.Test;
 
