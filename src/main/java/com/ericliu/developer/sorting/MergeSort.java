@@ -94,18 +94,18 @@ public class MergeSort extends Sort {
 
         int mid = (start + end) / 2;
 
-        mergeSort(dest, src, start, mid - 1);
-        mergeSort(dest, src, mid, end);
+        mergeSort(dest, src, start, mid);
+        mergeSort(dest, src, mid + 1, end);
 
-        if (src[mid - 1] < src[mid]) {
+        if (src[mid] < src[mid + 1]) {
             // array sorted already
             System.arraycopy(src, start, dest, start, end - start + 1);
             return;
         }
 
 
-        for (int write = start, readLeft = start, readRight = mid; write <= end; write++) {
-            if (readRight > end || (readLeft < mid && src[readLeft] < src[readRight])) {
+        for (int write = start, readLeft = start, readRight = mid + 1; write <= end; write++) {
+            if (readRight > end || (readLeft <= mid && src[readLeft] < src[readRight])) {
                 dest[write] = src[readLeft++];
             } else {
                 dest[write] = src[readRight++];
