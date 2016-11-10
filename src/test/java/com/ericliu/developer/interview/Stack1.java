@@ -17,7 +17,7 @@ public class Stack1 {
         private Stack<E> oldStack = new Stack<E>();
         private Stack<E> newStack = new Stack<E>();
 
-        private void shiftData() {
+        private void shiftStacks() {
             if (oldStack.isEmpty()) {
                 while (!newStack.isEmpty()) {
                     oldStack.push(newStack.pop());
@@ -26,13 +26,13 @@ public class Stack1 {
         }
 
         public E peek() {
-            shiftData();
+            shiftStacks();
             return oldStack.peek();
         }
 
 
         public E dequeue() {
-            shiftData();
+            shiftStacks();
             return oldStack.pop();
         }
 

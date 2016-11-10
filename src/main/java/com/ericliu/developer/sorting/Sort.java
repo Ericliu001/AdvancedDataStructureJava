@@ -7,7 +7,7 @@ public abstract class Sort{
 
    public abstract int[] sort(int[] array);
 
-    public void print(int[] array) {
+    public static void print(int[] array) {
         System.out.print("\n");
         for (int i : array) {
             System.out.print(i + ", ");

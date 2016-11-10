@@ -79,12 +79,12 @@ public class MergeSort extends Sort {
      * The production grade implementation
      * @param array
      */
-    public void mergeSort(int[] array) {
+    public static void mergeSort(int[] array) {
         int[] src = array.clone();
         mergeSort(src, array, 0, array.length - 1);
     }
 
-    private void mergeSort(int[] src, int[] dest, int start, int end) {
+    private static void mergeSort(int[] src, int[] dest, int start, int end) {
         if (end - start < 2) {
             if (dest[end] < dest[start]) {
                 swap(dest, start, end);

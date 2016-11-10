@@ -1,10 +1,10 @@
 package com.ericliu.developer.sorting;
 
-import java.util.Random;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
@@ -77,9 +77,8 @@ public class SortingTest {
     public void testMergeSort() {
         System.out.println("Merge sort: ");
 
-        MergeSort mergeSort = new MergeSort();
-        mergeSort.sort(mArray);
-        mergeSort.print(mArray);
+        MergeSort.mergeSort(mArray);
+        MergeSort.print(mArray);
 
     }
 
