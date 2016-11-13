@@ -1,10 +1,10 @@
 package com.ericliu.developer.interview;
 
-import java.util.Random;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Random;
 
 /**
  * Created by ericliu on 31/10/16.
@@ -51,13 +51,13 @@ public class DutchNationalFlag {
     public static void sort(Peddle[] array) {
         int cursor = 0, bluePivot = 0, redPivot = array.length - 1;
 
-        while (cursor < redPivot ) {
+        while (cursor < redPivot) {
             if (array[cursor] == Peddle.BLUE) {
                 swap(array, cursor, bluePivot);
                 bluePivot++;
-                cursor ++;
+                cursor++;
             } else if (array[cursor] == Peddle.RED) {
-                while (array[redPivot] == Peddle.RED && redPivot > cursor) {
+                if (array[redPivot] == Peddle.RED) {
                     redPivot--;
                 }
                 swap(array, cursor, redPivot);
