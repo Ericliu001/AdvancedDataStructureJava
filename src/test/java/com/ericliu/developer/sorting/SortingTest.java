@@ -88,7 +88,7 @@ public class SortingTest {
         System.out.println("Quick sort: ");
 
         QuickSort quickSort = new QuickSort();
-        quickSort.sort(mArray);
+        quickSort.QuickSort(mArray, 0 , mArray.length - 1);
         quickSort.print(mArray);
 
     }

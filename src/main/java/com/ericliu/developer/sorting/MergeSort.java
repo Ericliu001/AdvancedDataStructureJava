@@ -110,9 +110,6 @@ public class MergeSort extends Sort {
             } else {
                 dest[write] = src[readRight++];
             }
-
         }
-
-
     }
 }
