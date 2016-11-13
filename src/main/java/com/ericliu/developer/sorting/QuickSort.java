@@ -1,5 +1,7 @@
 package com.ericliu.developer.sorting;
 
+import java.util.Comparator;
+
 /**
  * Created by ericliu on 5/05/2016.
  */
@@ -52,6 +54,16 @@ public class QuickSort extends Sort {
         }
 
         int temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
+    }
+
+    private static void swap(Comparable[] array, int x, int y) {
+        if (x == y) {
+            return;
+        }
+
+        Comparable temp = array[x];
         array[x] = array[y];
         array[y] = temp;
     }
