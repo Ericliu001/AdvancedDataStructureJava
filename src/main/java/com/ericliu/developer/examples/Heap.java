@@ -36,6 +36,11 @@ public class Heap<E> {
     private transient Object[] queue;
 
 
+    public Heap() {
+        comparator = null;
+        queue = new Object[100];
+    }
+
     public Heap(Collection<? extends E> collection) {
         comparator = null;
         initFromCollection(collection);
