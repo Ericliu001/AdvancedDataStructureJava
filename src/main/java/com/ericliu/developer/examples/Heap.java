@@ -53,6 +53,26 @@ public class Heap<E> {
 
     /**
      * Inserts item x at position k, maintaining heap invariant by
+     * promoting x up the tree until it is greater than or equal to
+     * its parent, or is the root.
+     *
+     * To simplify and speed up coercions and comparisons. the
+     * Comparable and Comparator versions are separated into different
+     * methods that are otherwise identical. (Similarly for siftDown.)
+     *
+     * @param k the position to fill
+     * @param x the item to insert
+     */
+    private void siftUp(int k, E x) {
+        if (comparator != null)
+            siftUpUsingComparator(k, x);
+        else
+            siftUpComparable(k, x);
+    }
+
+
+    /**
+     * Inserts item x at position k, maintaining heap invariant by
      * demoting x down the tree repeatedly until it is less than or
      * equal to its children or is a leaf.
      *
@@ -64,6 +84,21 @@ public class Heap<E> {
             siftDownUsingComparator(k, x);
         else
             siftDownComparable(k, x);
+    }
+
+
+
+    private void siftUpComparable(int k, E x) {
+        Comparable<? super E> key = (Comparable<? super E>) x;
+        while (k > 0) {
+            int parent = (k - 1) >>> 1;
+            Object e = queue[parent];
+            if (key.compareTo((E) e) >= 0)
+                break;
+            queue[k] = e;
+            k = parent;
+        }
+        queue[k] = key;
     }
 
     private void siftDownComparable(int k, E x) {
@@ -84,22 +119,7 @@ public class Heap<E> {
         queue[k] = key;
     }
 
-    private void siftDownUsingComparator(int k, E x) {
-        int half = size >>> 1;
-        while (k < half) {
-            int child = (k << 1) + 1;
-            Object c = queue[child];
-            int right = child + 1;
-            if (right < size &&
-                    comparator.compare((E) c, (E) queue[right]) > 0)
-                c = queue[child = right];
-            if (comparator.compare(x, (E) c) <= 0)
-                break;
-            queue[k] = c;
-            k = child;
-        }
-        queue[k] = x;
-    }
+
 
     /**
      * Establishes the heap invariant (described above) in the entire tree,
@@ -108,19 +128,6 @@ public class Heap<E> {
     private void heapify() {
         for (int i = (size >>> 1) - 1; i >= 0; i--)
             siftDown(i, (E) queue[i]);
-    }
-
-    /**
-     * Returns the comparator used to order the elements in this
-     * queue, or {@code null} if this queue is sorted according to
-     * the {@linkplain Comparable natural ordering} of its elements.
-     *
-     * @return the comparator used to order this queue, or
-     *         {@code null} if this queue is sorted according to the
-     *         natural ordering of its elements
-     */
-    public Comparator<? super E> comparator() {
-        return comparator;
     }
 
 
@@ -164,37 +171,7 @@ public class Heap<E> {
     }
 
 
-    /**
-     * Inserts item x at position k, maintaining heap invariant by
-     * promoting x up the tree until it is greater than or equal to
-     * its parent, or is the root.
-     *
-     * To simplify and speed up coercions and comparisons. the
-     * Comparable and Comparator versions are separated into different
-     * methods that are otherwise identical. (Similarly for siftDown.)
-     *
-     * @param k the position to fill
-     * @param x the item to insert
-     */
-    private void siftUp(int k, E x) {
-        if (comparator != null)
-            siftUpUsingComparator(k, x);
-        else
-            siftUpComparable(k, x);
-    }
 
-    private void siftUpComparable(int k, E x) {
-        Comparable<? super E> key = (Comparable<? super E>) x;
-        while (k > 0) {
-            int parent = (k - 1) >>> 1;
-            Object e = queue[parent];
-            if (key.compareTo((E) e) >= 0)
-                break;
-            queue[k] = e;
-            k = parent;
-        }
-        queue[k] = key;
-    }
 
     private void siftUpUsingComparator(int k, E x) {
         while (k > 0) {
@@ -208,6 +185,22 @@ public class Heap<E> {
         queue[k] = x;
     }
 
+    private void siftDownUsingComparator(int k, E x) {
+        int half = size >>> 1;
+        while (k < half) {
+            int child = (k << 1) + 1;
+            Object c = queue[child];
+            int right = child + 1;
+            if (right < size &&
+                    comparator.compare((E) c, (E) queue[right]) > 0)
+                c = queue[child = right];
+            if (comparator.compare(x, (E) c) <= 0)
+                break;
+            queue[k] = c;
+            k = child;
+        }
+        queue[k] = x;
+    }
 
     /**
      * Increases the capacity of the array.
@@ -218,4 +211,16 @@ public class Heap<E> {
         // TODO: 6/06/2016 implementation omitted
     }
 
+    /**
+     * Returns the comparator used to order the elements in this
+     * queue, or {@code null} if this queue is sorted according to
+     * the {@linkplain Comparable natural ordering} of its elements.
+     *
+     * @return the comparator used to order this queue, or
+     *         {@code null} if this queue is sorted according to the
+     *         natural ordering of its elements
+     */
+    public Comparator<? super E> comparator() {
+        return comparator;
+    }
 }
