@@ -8,7 +8,7 @@ import java.util.Stack;
  * Created by ericliu on 30/04/2016.
  */
 public class BinarySearchTree {
-    private BstNode root;
+    public BstNode root;
 
 
     public void insert(int data) {
@@ -149,6 +149,28 @@ public class BinarySearchTree {
                 current = null;
             }
         }
+    }
+
+
+    public void recursiveInorder() {
+        System.out.println();
+        recursiveTraverse(root);
+    }
+
+    /**
+     * Traverse the tree recursively
+     * @param root
+     */
+    private void recursiveTraverse(BstNode root) {
+        if (root == null) {
+            return;
+        }
+
+        recursiveTraverse(root.left);
+
+        System.out.print(root.data + ", ");
+
+        recursiveTraverse(root.right);
     }
 
 }
